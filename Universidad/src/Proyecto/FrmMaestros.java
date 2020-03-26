@@ -190,14 +190,12 @@ public class FrmMaestros extends javax.swing.JFrame {
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/Universidad_1", "root", "informaticdv2016");
             PreparedStatement pst = cn.prepareStatement("insert into Maestro values(?,?,?,?,?)");
-            
             pst.setString(1, "0");
             pst.setString(2, TxtNombre.getText().trim());
             pst.setString(3, TxtApellido.getText().trim());
             pst.setString(4, TxtTitulo.getText().trim());
             pst.setString(5, TxtDPI.getText().trim());
             pst.executeUpdate();
-            
             TxtNombre.setText("");
             TxtApellido.setText("");
             TxtTitulo.setText("");
@@ -213,7 +211,6 @@ public class FrmMaestros extends javax.swing.JFrame {
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/Universidad_1", "root", "informaticdv2016");
             PreparedStatement pst = cn.prepareStatement("delete from Maestro where Id_Maestro = ?");
-            
             pst.setString(1, TxtBID.getText().trim());
             pst.executeUpdate();
             TxtNombre.setText("");
@@ -250,9 +247,7 @@ public class FrmMaestros extends javax.swing.JFrame {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/Universidad_1", "root", "informaticdv2016");
             PreparedStatement pst = cn.prepareStatement("select * from Maestro where Id_Maestro = ?");
             pst.setString(1, TxtBID.getText().trim());
-            
             ResultSet rs = pst.executeQuery();
-            
             if(rs.next()){
                 TxtNombre.setText(rs.getString("Nombre_Maestro"));
                 TxtApellido.setText(rs.getString("Apellido_Maestro"));
